@@ -25,6 +25,7 @@ namespace EX_01_async_await
             Console.WriteLine("2) Задержка асинхронной операции и Task.Delay");
             Console.WriteLine("3) Преимущества асинхронности - СИНХРОННО");
             Console.WriteLine("4) Преимущества асинхронности - АСИНХРОННО");
+            Console.WriteLine("5) Лямбда при определении асинхрлонной операции");
             Console.WriteLine("0) Exit");
             Console.Write("\r\nSelect an option: ");
 
@@ -58,6 +59,23 @@ namespace EX_01_async_await
                     await samTask;
                     Console.ReadKey();
                     return true;
+                case "5":
+                    var t = Task<int>.Run(() => {
+                        int max = 1000000;
+                        int ctr = 0;
+                        for (ctr = 0; ctr <= max; ctr++)
+                        {
+                            if (ctr == max / 2 && DateTime.Now.Hour <= 12)
+                            {
+                                ctr++;
+                                break;
+                            }
+                        }
+                        return ctr;
+                    });
+                    Console.WriteLine("Finished {0:N0} iterations.", t.Result);
+                    Console.ReadKey();
+                    return true;
                 case "0":
                     return false;
                 default:
@@ -69,13 +87,13 @@ namespace EX_01_async_await
         private static void Print()
         {
             Thread.Sleep(3000);     // имитация продолжительной работы
-            Console.WriteLine("Hello METANIT.COM");
+            Console.WriteLine("Hello Guys!");
         }
         // определение асинхронного метода
         private static async Task PrintAsync_01()
         {
-            Console.WriteLine("Начало метода PrintAsync"); // выполняется синхронно
-            await Task.Run(() => Print());                // выполняется асинхронно
+            Console.WriteLine("Начало метода PrintAsync");  // выполняется синхронно
+            await Task.Run(() => Print());                  // выполняется асинхронно
             Console.WriteLine("Конец метода PrintAsync");
             Console.ReadKey();
         }

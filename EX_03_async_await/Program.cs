@@ -112,7 +112,7 @@ namespace EX_03_async_await
         // --- 04 ---
         async static Task<int> SquareAsync(int n)
         {
-            await Task.Delay(0);
+            await Task.Delay(1000);
             var result = n * n;
             Console.WriteLine($"Квадрат числа {n} равен {result}");
             return result;

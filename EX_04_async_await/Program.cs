@@ -20,7 +20,7 @@ namespace EX_04_async_await
         {
             Console.Clear();
             Console.WriteLine("Choose an option:");
-            Console.WriteLine("1) Демонстрация блокировки асинхронности синхронностью");
+            Console.WriteLine("1) Демонстрация блокировки асинхронности оператором await");
             Console.WriteLine("2) Недетерминированный вывод");
             Console.WriteLine("3) Task.WhenAll");
             Console.WriteLine("4) Task.WhenAny");
@@ -45,7 +45,7 @@ namespace EX_04_async_await
                     var task2 = PrintAsync("Hello World");
                     var task3 = PrintAsync("Hello Guys!");
 
-                    // ожидаем завершения задач
+                    // запуск всех задач
                     await task1;
                     await task2;
                     await task3;
@@ -57,7 +57,7 @@ namespace EX_04_async_await
                     // определяем и запускаем задачи
                     var task01 = PrintAsync("Hello C#");
                     var task02 = PrintAsync("Hello World");
-                    var task03 = PrintAsync("Hello METANIT.COM");
+                    var task03 = PrintAsync("Hello ZZZ.COM");
 
                     // ожидаем завершения всех задач
                     await Task.WhenAll(task01, task02, task03);
@@ -68,7 +68,7 @@ namespace EX_04_async_await
                     // определяем и запускаем задачи
                     var task001 = PrintAsync_04("Hello C#");
                     var task002 = PrintAsync_04("Hello World");
-                    var task003 = PrintAsync_04("Hello METANIT.COM");
+                    var task003 = PrintAsync_04("Hello ZZZ.COM");
 
                     // ожидаем завершения хотя бы одной задачи
                     await Task.WhenAny(task001, task002, task003);
